@@ -1,4 +1,4 @@
-#! \Users\aghapy\Desktop\microverse\ruby\Triple_T_Game\bin\main.rb
+#!#!/usr/bin/env ruby
 puts "****************************"
 puts "Welcome to the Triple-T-Game"
 puts "****************************"
