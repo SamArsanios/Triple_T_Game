@@ -26,9 +26,7 @@ puts "Welcome Player-1 - #{player1} and Player-2 - #{player2}. You are ready to 
 
 # Inform players about instructions of the game(place x symbol or o symbol on the board)
 
-# Player-1 always starts first 
-
-puts "#{player-1} starts first. Make the first move."
+# Player-1 always starts first
 
 # Inform Player-1 if it is an invalid move and ask to make a valid move
 
