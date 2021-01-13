@@ -2,7 +2,6 @@
 require_relative '../lib/player.rb'
 require_relative '../lib/game.rb'
 require_relative '../lib/gameboard.rb'
-require_relative '../lib/game_play.rb'
 
 # Initialize the game
 player1 = Players.new('O')
@@ -10,24 +9,28 @@ player2 = Players.new('X')
 
 valid_player_pick = 0
 
-game = Game.new(player1,player2)
+game = Game.new(player1, player2)
 
-puts GamePlay.welcome
+puts game.welcome
 
-puts GamePlay.instructions
+puts game.instructions
 
 initial_player = proc do |player, number|
-    puts GamePlay.player_names(number)
+  puts game.player_names(number)
+  player.name = gets.chomp.capitalize
+  while player.name.empty?
+    puts game.validate_name
     player.name = gets.chomp.capitalize
-    while player.name.empty?
-        puts Game.validate_name
-        player.name = gets.chomp.capitalize
-    end
-    puts GamePlay.assign_totem(player)
+  end
+  puts game.assign_totem(player)
 end
 
 initial_player.call(player1, 1)
 initial_player.call(player2, 2)
+
+# board
+board = GameBoard.new
+puts game.display_grid(board.grid)
 
 validate_pick = proc do |pick|
   valid_pick = pick
@@ -51,6 +54,7 @@ turn = proc do |player|
   board.update_grid(pick, player.totem)
   puts game.display_grid(board.grid)
 end
+
 loop do
   turn.call(player1)
   break if player1.winner? || board.grid_filled?
@@ -65,7 +69,6 @@ elsif player2.winner?
 else
   puts game.draw
 end
-
 
 # validate_pick = proc do |pick|
 #     valid_pick = pick
