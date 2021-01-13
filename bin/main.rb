@@ -1,33 +1,7 @@
 #!/usr/bin/env ruby
 
-puts '------------------------------------------------------------'
-puts '|                                                          |'
-puts '|                 Welcome to Triple-T-Game                 |'
-puts '|                                                          |'
-puts '------------------------------------------------------------'
 
-puts 'Hi there, welcome to Triple T, Ready!\n\n'
 
-puts 'Game instructions\n'
-puts 'The players will be provided a board to make their moves on as shown below.'
-
-puts ' 1 | 2 | 3 '
-puts '-----------'
-puts ' 4 | 5 | 6 '
-puts '-----------'
-puts ' 7 | 8 | 9 '
-
-puts 'When  the game starts, each player will be assigned one of the totems of O and X.'
-puts 'Player1 will start the by making the first move of placing the totem into a cell on the board.'
-puts 'Players will be informed if there is a win or a draw case in the game.'
-puts 'If no win or a draw in the game, Player2 makes the move'
-puts 'Players will be informed if there is a win or a draw case in the game.'
-puts 'The continues by the move of the other player until one player wins or a draw occurs when no one wins.'
-puts 'For winning the game, one player should have one of the following combinations.'
-puts 'The winning combinations are 123, 456, 789, 147, 258, 369, 159, and 357.'
-puts 'After completing their moves, if no player cat get one of the winning combinations, it is a draw.'
-puts 'After the game ended up with a winner, or a draw, players are asked whether they would like to play again.'
-puts 'If their answer is yes (y), then the game restarts, otherwise, the game goes into sleeping.\n\n'
 
 puts 'Player One: Enter your name please\n'
 player1 = gets.chomp

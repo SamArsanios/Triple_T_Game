@@ -18,7 +18,4 @@ class Players
         end
         outcome
     end
-
-
-
 end
