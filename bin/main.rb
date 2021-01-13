@@ -40,21 +40,7 @@ puts "Welcome #{player2}"
 puts 'The Game is starting! Ready, steady, and go!\n'
 
 # Display the game board and
-class GameBoard
-    attr_accessor :grid
-    def initialize(grid= [1,2,3,4,5,6,7,8,9])
-        @grid = grid
-    end
 
-    def display_grid(grid_arr)
-        "\n #{grid_arr[0]} | #{grid_arr[1]} | #{grid_arr[2]} 
-        ----------
-        #{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
-        ---------
-        #{grid_array[6]} | #{grid_array[7]} | #{grid_array[8]}\n \n"
-    end
-end
-    a = GameBoard.display_grid (grid[])
 # winner = false
 # # Inform Player-1 if it is an invalid move and ask to make a valid move
 # puts 'Request Player1 to make move'
