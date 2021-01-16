@@ -117,7 +117,7 @@ loop do
   elsif player2.winning?
     puts game.declare_winner(player2.name)
   else
-    puts game.draw
+    puts game.game_tie
   end
   board.clear_board
   puts 'Would you lke to play again?'
