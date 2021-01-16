@@ -1,7 +1,6 @@
 class GameBoard
-  grid_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9].freeze
-
   attr_accessor :grid
+  
   def initialize(grid = [1, 2, 3, 4, 5, 6, 7, 8, 9])
     @grid = grid
   end
@@ -11,15 +10,29 @@ class GameBoard
     @grid
   end
 
-  def fill_grid
+  def fill_grid?
     @grid.all?(String)
   end
 
   def validate_pick?(player_pick)
-    grid_positions.include?(player_pick)
+    @grid.include?(player_pick)
   end
 
   def already_picked(player_pick)
-    @grid.include(player_pick)
+    @grid.include?(player_pick)
+  end
+
+  def clear_board
+    @grid = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+  end
+
+  def who_won? (player1,player2)
+    if player1.winning?
+      puts game.declare_winner(player1.name)
+    elsif player2.winning?
+      puts game.declare_winner(player2.name)
+    else
+      puts game.game_tie
+    end
   end
 end
