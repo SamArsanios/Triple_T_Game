@@ -1,6 +1,6 @@
 class GameBoard
   attr_accessor :grid
-  
+
   def initialize(grid = [1, 2, 3, 4, 5, 6, 7, 8, 9])
     @grid = grid
   end
@@ -26,7 +26,7 @@ class GameBoard
     @grid = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
 
-  def who_won? (player1,player2)
+  def who_won?(player1, player2)
     if player1.winning?
       puts game.declare_winner(player1.name)
     elsif player2.winning?

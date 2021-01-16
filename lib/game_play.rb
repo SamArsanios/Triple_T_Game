@@ -3,9 +3,9 @@ module GamePlay
     "Player#{number}, Please enter your name"
   end
 
- def validate_name
+  def validate_name
     'Please enter a correct name'
-  end 
+  end
 
   def assign_totem(player)
     "#{player.name} your totem is #{player.totem}" + "\n\n"
@@ -40,9 +40,8 @@ module GamePlay
   end
 
   def play_again?
-    puts "Would you like to play again? y/n"
+    puts 'Would you like to play again? y/n'
     ans = gets.chomp.downcase
-    ans 
+    ans
   end
 end
-

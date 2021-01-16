@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
+
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/BlockLength
+# rubocop:disable Layout/LineLength
+
 require_relative '../lib/player.rb'
 require_relative '../lib/game.rb'
 require_relative '../lib/gameboard.rb'
@@ -119,3 +124,7 @@ loop do
   ans = gets.chomp.downcase
   break if ans != 'y'
 end
+
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/BlockLength
+# rubocop:enable Layout/LineLength

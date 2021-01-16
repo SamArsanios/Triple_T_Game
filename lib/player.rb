@@ -5,7 +5,7 @@ class Players
   attr_accessor :name
   attr_reader :picks_arr, :totem
 
-  def initialize(name = '', picks_arr = [], totem)
+  def initialize(totem, name = '', picks_arr = [])
     @name = name
     @picks_arr = picks_arr
     @totem = totem
