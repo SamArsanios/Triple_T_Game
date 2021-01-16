@@ -1,89 +1,130 @@
 #!/usr/bin/env ruby
 
-puts '------------------------------------------------------------'
-puts '|                                                          |'
-puts '|                 Welcome to Triple-T-Game                 |'
-puts '|                                                          |'
-puts '------------------------------------------------------------'
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/BlockLength
+# rubocop:disable Layout/LineLength
 
-# Welcoming message
-puts 'Hi there, welcome to Triple T, Ready!'
+require_relative '../lib/player.rb'
+require_relative '../lib/game.rb'
+require_relative '../lib/gameboard.rb'
 
-# The guide for players
-puts 'The players will be provided a board to make their moves on as shown below.'
+def welcome
+  system('clear')
+  puts '------------------------------------------------------------'
+  puts '|                                                          |'
+  puts '|                 Welcome to Triple-T-Game                 |'
+  puts '|                                                          |'
+  puts '------------------------------------------------------------'
+  puts 'Hi there, welcome to Triple T, Ready!' + "\n\n\n"
+end
 
-puts ' 1 | 2 | 3 '
-puts '-----------'
-puts ' 4 | 5 | 6 '
-puts '-----------'
-puts ' 7 | 8 | 9 '
+welcome
 
-puts 'When  the game starts, each player will be assigned one of the totems of O and X.'
-puts 'Player1 will start the by making the first move of placing the totem into a cell on the board.'
-puts 'Players will be informed if there is a win or a draw case in the game.'
-puts 'If no win or a draw in the game, Player2 makes the move'
-puts 'Players will be informed if there is a win or a draw case in the game.'
-puts 'The continues by the move of the other player until one player wins or a draw occurs when no one wins.'
-puts 'For winning the game, one player should have one of the following combinations.'
-puts 'The winning combinations are 123, 456, 789, 147, 258, 369, 159, and 357.'
-puts 'After completing their moves, if no player cat get one of the winning combinations, it is a draw.'
-puts 'After the game ended up with a winner, or a draw, players are asked whether they would like to play again.'
-puts 'If their answer is yes (y), then the game restarts, otherwise, the game goes into sleeping.'
+def instructions
+  system('clear')
+  puts 'Game Instructions'
+  puts '-----------------'
+  puts "\n"
+  puts 'The players will be provided a board to make their moves on as shown below.' + "\n\n"
+  puts ' 1 | 2 | 3 '
+  puts '-----------'
+  puts ' 4 | 5 | 6 '
+  puts '-----------'
+  puts ' 7 | 8 | 9 '
+  puts "\n"
+  puts 'When  the game starts, each player will be assigned one of the totems of O and X.' + "\n\n"
+  puts 'Player1 will start the by making the first move of placing the totem into a cell on the board.' + "\n\n"
+  puts 'Players will be informed if there is a win or a draw case in the game.' + "\n\n"
+  puts 'If no win or a draw in the game, Player2 makes the move' + "\n\n"
+  puts 'Players will be informed if there is a win or a draw case in the game.' + "\n\n"
+  puts 'The continues by the move of the other player until one player wins or a draw occurs when no one wins.' + "\n\n"
+  puts 'For winning the game, one player should have one of the following combinations.' + "\n\n"
+  puts 'The winning combinations are 123, 456, 789, 147, 258, 369, 159, and 357.' + "\n\n"
+  puts 'After completing their moves, if no player cat get one of the winning combinations, it is a draw.' + "\n\n"
+  puts 'After the game ended up with a winner, or a draw, players are asked whether they would like to play again.' + "\n\n"
+  puts 'If their answer is yes (y), then the game restarts, otherwise, the game goes into sleeping.' + "\n\n"
+end
 
-# Asking names of players
-puts 'Player One: Enter your name please'
-player1 = gets.chomp
-puts "Welcome #{player1}"
+puts "Enter 'y' if you want to see the instructions (Press enter to continue)"
+instructions if gets.chomp.casecmp('y').zero?
 
-puts 'Player Two: Enter your name please'
-player2 = gets.chomp
-puts "Welcome #{player2}"
+loop do
+  # Initialize the game
+  player1 = Players.new('O')
+  player2 = Players.new('X')
+  valid_player_pick = 0
+  game = Game.new(player1, player2)
 
-# Ready message
-puts 'The Game is starting! Ready, steady, and go!'
-# Inform players about instructions of the game(place x symbol or o symbol on the board)
-puts 'Game instructions'
+  initial_player = proc do |player, number|
+    puts game.player_names(number)
+    player.name = gets.chomp.capitalize
+    while player.name.empty?
+      puts game.validate_name
+      player.name = gets.chomp.capitalize
+    end
+    puts game.assign_totem(player)
+  end
 
-# Display the game board and
-puts 'Display the board'
-puts '[ 1 | 2 | 3 ]'
-puts '-------------'
-puts '[ 4 | 5 | 6 ]'
-puts '-------------'
-puts '[ 7 | 8 | 9 ]'
+  # Initialize the board
+  puts 'Board'
+  puts '-----' + "\n\n"
+  board = GameBoard.new
+  puts game.display_grid(board.grid)
 
-winner = false
-# Inform Player-1 if it is an invalid move and ask to make a valid move
-puts 'Request Player1 to make move'
-puts 'Player1 please make your move by selecting a number between 1 - 9'
-player1_move = gets.chomp
-puts "Player1 one selected the move of #{player1_move}."
+  # Validation of moves
+  validation = proc do |pick|
+    valid_player_pick = pick
+    until board.validate_pick?(pick) && board.already_picked(pick)
+      if !board.validate_pick?(pick)
+        puts game.pick_not_valid
+        pick = gets.chomp.to_i
+      elsif !board.already_picked(pick)
+        puts game.already_picked
+        pick = gets.chomp.to_i
+      end
+    end
+    valid_player_pick = pick
+  end
 
-# Check if Player-1 makes a valid move. If not, give a warning and repeat the move selection.
-puts "Player1' move is invalid. Make a valid move by picking a number between 1 - 9."
+  # Turns of players
+  turn = proc do |player|
+    puts game.pick_number(player.name)
+    pick = gets.chomp.to_i
+    validation.call(pick)
+    pick = valid_player_pick
+    player.picks_arr << pick
+    board.replace_grid(pick, player.totem)
+    puts game.display_grid(board.grid)
+  end
 
-# If Player1's move is valid, then check if Player1 wins, or the game ends with a draw.
-puts 'Player1 wins!'
-puts 'The game ended with draw.'
+  board.clear_board
 
-puts "#{Player2}, make your move!"
-player2_move = gets.chomp
-puts "Player2 selected the move of #{player2_move}."
+  initial_player.call(player1, 1)
+  initial_player.call(player2, 2)
 
-# If Player2's move is valid, then check if Player2 wins, or the game ends with a draw.
-puts 'Player2 wins!'
-puts 'The game ended with draw.'
+  puts game.display_grid(board.grid)
 
-# Continue the loop until one player wins or the game ends with a draw
-# Winner is declared or a Tie is declared
-break if winner == true
+  loop do
+    turn.call(player1)
+    break if player1.winning? || board.fill_grid?
 
-puts 'Congratulations you have won the game'
+    turn.call(player2)
+    break if player2.winning? || board.fill_grid?
+  end
 
-# Ask players if they would like to continue playing(y/n)
-puts 'Would you like to play again?'
-play_again = gets.chomp
-puts "you have chosen #{play_again}"
+  if player1.winning?
+    puts game.declare_winner(player1.name)
+  elsif player2.winning?
+    puts game.declare_winner(player2.name)
+  else
+    puts game.game_tie
+  end
+  board.clear_board
+  puts 'Would you lke to play again?'
+  ans = gets.chomp.downcase
+  break if ans != 'y'
+end
 
-# If one of the players would like to quit the game, declare a thank you message and end the game
-puts 'Thanks for playing!'
+# rubocop:enable Metrics/MethodLength
+# rubocop:enable Metrics/BlockLength
+# rubocop:enable Layout/LineLength
