@@ -15,7 +15,7 @@ The following instance of winning a game is given below when player X won the ga
 After playing game a few times, players will learn that doing rational moves always lead the game to a tie.
 ## Built With
 
-- Ruby
+- ![Ruby](https://img.shields.io/badge/ruby-%23CC342D.svg?&style=for-the-badge&logo=ruby&logoColor=white)
 
 ## Getting Started
 
