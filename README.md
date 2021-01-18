@@ -21,9 +21,17 @@ After playing game a few times, players will learn that doing rational moves alw
 
 To get a local copy up and running follow these simple example steps in your terminal.
 
-- `https://github.com/SamArsanios/Triple_T_Game`
-- `cd Triple_T_Game`
-- `bin/main.rb`
+Clone the repository to your local machine
+`git clone https://github.com/SamArsanios/Triple_T_Game`
+
+Go to the directory
+`cd Triple_T_Game`
+
+Go to the execution file directory
+`$ cd bin`
+
+Run the file
+`$ ruby main.rb`
 
 ## Authors
 
@@ -40,7 +48,7 @@ Contributions, issues, and feature requests are welcome!
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+Give a ⭐️ if you like this project and follow the creators' github accounts!
 
 ## 📝 License
 
