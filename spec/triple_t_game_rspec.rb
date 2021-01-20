@@ -9,7 +9,36 @@ describe GamePlay do
         it "returns player number" do 
             new_player = 2
             expect(new_GamePlay.player_names(new_player)).to eql("Player#{new_player}, Please enter your name")
+            expect(new_GamePlay.player_names(new_player)).to_not eql("Player3, Please enter your name")
         end
     end
 end
 
+describe GameBoard do
+    let(:new_GameBoard) { GameBoard.new }
+    describe '#validate_pick?' do
+        it 'checks for a valid pick in the board' do
+            expect(new_GameBoard.validate_pick?(2)).to eql(true)
+            expect(new_GameBoard.validate_pick?(10)).to_not eql(true)
+        end
+    end
+
+    describe '#already_picked' do
+        it 'checks for a valid pick in the board' do
+            expect(new_GameBoard.already_picked(2)).to eql(true)
+            expect(new_GameBoard.already_picked(10)).to_not eql(true)
+        end
+    end
+    
+end
+
+describe Players do 
+    let(:start) { Players.new('x', name = '', picks_arr = [1, 2, 3]) }
+    let(:start1) { Players.new('x', name = '', picks_arr = [1, 2, 1]) } 
+    describe "#winning?" do 
+        it "returns a boolean" do 
+            expect(start.winning?).to eql(true)
+            expect(start1.winning?).to_not eql(true)
+        end 
+    end 
+end 
