@@ -2,11 +2,10 @@
 
 # rubocop:disable Metrics/MethodLength
 # rubocop:disable Metrics/BlockLength
-# rubocop:disable Layout/LineLength
 
-require_relative '../lib/player.rb'
-require_relative '../lib/game.rb'
-require_relative '../lib/gameboard.rb'
+require_relative '../lib/player'
+require_relative '../lib/game'
+require_relative '../lib/gameboard'
 
 def welcome
   system('clear')
@@ -15,7 +14,7 @@ def welcome
   puts '|                 Welcome to Triple-T-Game                 |'
   puts '|                                                          |'
   puts '------------------------------------------------------------'
-  puts 'Hi there, welcome to Triple T, Ready!' + "\n\n\n"
+  puts "Hi there, welcome to Triple T, Ready!\n\n\n"
 end
 
 welcome
@@ -25,24 +24,24 @@ def instructions
   puts 'Game Instructions'
   puts '-----------------'
   puts "\n"
-  puts 'The players will be provided a board to make their moves on as shown below.' + "\n\n"
+  puts "The players will be provided a board to make their moves on as shown below.\n\n"
   puts ' 1 | 2 | 3 '
   puts '-----------'
   puts ' 4 | 5 | 6 '
   puts '-----------'
   puts ' 7 | 8 | 9 '
   puts "\n"
-  puts 'When  the game starts, each player will be assigned one of the totems of O and X.' + "\n\n"
-  puts 'Player1 will start the by making the first move of placing the totem into a cell on the board.' + "\n\n"
-  puts 'Players will be informed if there is a win or a draw case in the game.' + "\n\n"
-  puts 'If no win or a draw in the game, Player2 makes the move' + "\n\n"
-  puts 'Players will be informed if there is a win or a draw case in the game.' + "\n\n"
-  puts 'The continues by the move of the other player until one player wins or a draw occurs when no one wins.' + "\n\n"
-  puts 'For winning the game, one player should have one of the following combinations.' + "\n\n"
-  puts 'The winning combinations are 123, 456, 789, 147, 258, 369, 159, and 357.' + "\n\n"
-  puts 'After completing their moves, if no player cat get one of the winning combinations, it is a draw.' + "\n\n"
-  puts 'After the game ended up with a winner, or a draw, players are asked whether they would like to play again.' + "\n\n"
-  puts 'If their answer is yes (y), then the game restarts, otherwise, the game goes into sleeping.' + "\n\n"
+  puts "When  the game starts, each player will be assigned one of the totems of O and X.\n\n"
+  puts "Player1 will start the by making the first move of placing the totem into a cell on the board.\n\n"
+  puts "Players will be informed if there is a win or a draw case in the game.\n\n"
+  puts "If no win or a draw in the game, Player2 makes the move\n\n"
+  puts "Players will be informed if there is a win or a draw case in the game.\n\n"
+  puts "The continues by the move of the other player until one player wins or a draw occurs when no one wins.\n\n"
+  puts "For winning the game, one player should have one of the following combinations.\n\n"
+  puts "The winning combinations are 123, 456, 789, 147, 258, 369, 159, and 357.\n\n"
+  puts "After completing their moves, if no player cat get one of the winning combinations, it is a draw.\n\n"
+  puts "After the game ended up with a winner, or a draw, players are asked whether they would like to play again.\n\n"
+  puts "If their answer is yes (y), then the game restarts, otherwise, the game goes into sleeping.\n\n"
 end
 
 puts "Enter 'y' if you want to see the instructions (Press enter to continue)"
@@ -67,7 +66,7 @@ loop do
 
   # Initialize the board
   puts 'Board'
-  puts '-----' + "\n\n"
+  puts "-----\n\n"
   board = GameBoard.new
   puts game.display_grid(board.grid)
 
@@ -127,4 +126,3 @@ end
 
 # rubocop:enable Metrics/MethodLength
 # rubocop:enable Metrics/BlockLength
-# rubocop:enable Layout/LineLength
