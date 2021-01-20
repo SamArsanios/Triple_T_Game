@@ -1,7 +1,7 @@
-require_relative '../lib/game_play.rb'
-require_relative '../lib/game.rb'
-require_relative '../lib/gameboard.rb'
-require_relative '../lib/player.rb'
+require_relative '../lib/game_play'
+require_relative '../lib/game'
+require_relative '../lib/gameboard'
+require_relative '../lib/player'
 
 describe GamePlay do
   let(:new_GamePlay) { Class.new { extend GamePlay } }
@@ -19,13 +19,13 @@ describe GamePlay do
 
   describe '#declare_winner' do
     it 'returns name of winner' do
-      name = "Sam"
+      name = 'Sam'
       expect(new_GamePlay.declare_winner(name)).to eql("Congratulations Dude!!!!, #{name}, You are the winner")
     end
 
     it 'returns false if winner is invalid' do
       name = 1
-      expect(new_GamePlay.declare_winner(name)).to_not eql("Congratulations Dude!!!!, Sam, You are the winner")
+      expect(new_GamePlay.declare_winner(name)).to_not eql('Congratulations Dude!!!!, Sam, You are the winner')
     end
   end
 end
@@ -66,16 +66,15 @@ describe GameBoard do
     end
   end
 
-  describe "#fill_grid?" do
-  it "checks for string" do
-   expect(new_GameBoard.fill_grid?).to eql(false) 
+  describe '#fill_grid?' do
+    it 'checks for string' do
+      expect(new_GameBoard.fill_grid?).to eql(false)
+    end
+
+    it 'return true for no string value' do
+      expect(new_GameBoard.fill_grid?).to_not eql(true)
+    end
   end
-
-  it "return true for no string value" do
-    expect(new_GameBoard.fill_grid?).to_not eql(true) 
-   end
-
-end
 end
 
 describe Players do
@@ -88,5 +87,3 @@ describe Players do
     end
   end
 end
-
-
