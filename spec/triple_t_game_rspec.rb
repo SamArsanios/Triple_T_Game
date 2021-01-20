@@ -6,7 +6,7 @@ require_relative '../lib/player.rb'
 describe GamePlay do
   let(:new_GamePlay) { Class.new { extend GamePlay } }
   describe '#player_names' do
-    it 'returns player number' do 
+    it 'returns player number' do
       new_player = 2
       expect(new_GamePlay.player_names(new_player)).to eql("Player#{new_player}, Please enter your name")
       expect(new_GamePlay.player_names(new_player)).to_not eql('Player3, Please enter your name')
@@ -38,13 +38,13 @@ describe GameBoard do
   end
 end
 
-describe Players do 
-  let(:start) { Players.new('x', name = '', picks_arr = [1, 2, 3]) }
-  let(:start1) { Players.new('x', name = '', picks_arr = [1, 2, 1]) } 
-  describe '#winning?' do 
-    it 'returns a boolean' do 
+describe Players do
+  let(:start) { Players.new('x', '', [1, 2, 3]) }
+  let(:start1) { Players.new('x', '', [1, 2, 1]) }
+  describe '#winning?' do
+    it 'returns a boolean' do
       expect(start.winning?).to eql(true)
       expect(start1.winning?).to_not eql(true)
-    end 
-  end 
-end 
+    end
+  end
+end
