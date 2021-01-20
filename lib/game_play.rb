@@ -32,7 +32,7 @@ module GamePlay
   end
 
   def declare_winner(name)
-    puts "Congratulations Dude!!!!, #{name}, You are the winner"
+    "Congratulations Dude!!!!, #{name}, You are the winner"
   end
 
   def game_tie

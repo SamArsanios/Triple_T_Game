@@ -16,6 +16,18 @@ describe GamePlay do
       expect(new_GamePlay.player_names(new_player)).to_not eql('Player3, Please enter your name')
     end
   end
+
+  describe '#declare_winner' do
+    it 'returns name of winner' do
+      name = "Sam"
+      expect(new_GamePlay.declare_winner(name)).to eql("Congratulations Dude!!!!, #{name}, You are the winner")
+    end
+
+    it 'returns false if winner is invalid' do
+      name = 1
+      expect(new_GamePlay.declare_winner(name)).to_not eql("Congratulations Dude!!!!, Sam, You are the winner")
+    end
+  end
 end
 
 describe GameBoard do
