@@ -38,5 +38,4 @@ module GamePlay
   def game_tie
     'The game is a tie!'
   end
-
 end
