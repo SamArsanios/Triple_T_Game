@@ -25,14 +25,4 @@ class GameBoard
   def clear_board
     @grid = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   end
-
-  def who_won?(player1, player2)
-    if player1.winning?
-      puts game.declare_winner(player1.name)
-    elsif player2.winning?
-      puts game.declare_winner(player2.name)
-    else
-      puts game.game_tie
-    end
-  end
 end
