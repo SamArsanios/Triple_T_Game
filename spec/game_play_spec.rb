@@ -1,6 +1,6 @@
-require_relative "../lib/game.rb"
-require_relative "../lib/player.rb"
-require_relative "../lib/gameboard.rb"
+require_relative '../lib/game.rb'
+require_relative '../lib/player.rb'
+require_relative '../lib/gameboard.rb'
 
 describe Game do
   attr_accessor :player1, :player2, :name, :picks_arr, :totem, :grid

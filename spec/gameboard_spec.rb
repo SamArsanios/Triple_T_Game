@@ -1,4 +1,4 @@
-require_relative "../lib/gameboard.rb"
+require_relative '../lib/gameboard.rb'
 
 describe GameBoard do
   describe '#replace_grid' do
