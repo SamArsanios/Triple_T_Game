@@ -6,5 +6,9 @@ describe Players do
     it 'returns a boolean' do
       expect(start.winning?).to eql(false)
     end
+
+    it 'returns a boolean' do
+      expect(start.winning?).not_to eql(true)
+    end
   end
 end
