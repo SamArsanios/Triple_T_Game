@@ -57,7 +57,7 @@ describe GameBoard do
 
     it 'returns a clean board' do
       board = GameBoard.new
-      expect(board.clear_board).not_to eql([1, 2, 3, 4, 5, "o", 7, 8, 9])
+      expect(board.clear_board).not_to eql([1, 2, 3, 4, 5, 'o', 7, 8, 9])
     end
   end
 end

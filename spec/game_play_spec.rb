@@ -16,7 +16,7 @@ describe Game do
     end
 
     it 'returns nothing if no arg is given' do
-      expect(game.player_names(1)).not_to eql(!'Player3, Please enter your name')
+      expect(game.player_names(1)).not_to eql('Player3, Please enter your name')
     end
   end
 
@@ -34,7 +34,7 @@ describe Game do
     it 'returns a string' do
       expect(game_play.assign_totem(player)).to eql("#{player.name} your totem is #{player.totem}" + "\n\n")
     end
-    
+
     it 'returns a string' do
       expect(game_play.assign_totem(player)).not_to eql("Your totem is #{player.totem}" + "\n\n")
     end
