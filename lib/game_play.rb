@@ -12,7 +12,7 @@ module GamePlay
   end
 
   def display_grid(grid_array)
-    puts "    #{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
+    "    #{grid_array[0]} | #{grid_array[1]} | #{grid_array[2]}
     ---------
     #{grid_array[3]} | #{grid_array[4]} | #{grid_array[5]}
     ---------
@@ -20,28 +20,22 @@ module GamePlay
   end
 
   def pick_number(player_name)
-    puts "#{player_name}, Please pick an available number"
+    "#{player_name}, Please pick an available number"
   end
 
   def pick_not_valid
-    puts 'Your pick is not valid, please make another pick'
+    'Your pick is not valid, please make another pick'
   end
 
   def already_picked_message
-    puts 'This number is already pick, please make another pick.'
+    'This number is already pick, please make another pick.'
   end
 
   def declare_winner(name)
-    puts "Congratulations Dude!!!!, #{name}, You are the winner"
+    "Congratulations Dude!!!!, #{name}, You are the winner"
   end
 
   def game_tie
-    puts 'The game is a tie!'
-  end
-
-  def play_again?
-    puts 'Would you like to play again? y/n'
-    ans = gets.chomp.downcase
-    ans
+    'The game is a tie!'
   end
 end

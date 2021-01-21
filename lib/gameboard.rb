@@ -28,11 +28,11 @@ class GameBoard
 
   def who_won?(player1, player2)
     if player1.winning?
-      puts game.declare_winner(player1.name)
+      game.declare_winner(player1.name)
     elsif player2.winning?
-      puts game.declare_winner(player2.name)
+      game.declare_winner(player2.name)
     else
-      puts game.game_tie
+      game.game_tie
     end
   end
 end
