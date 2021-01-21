@@ -4,7 +4,7 @@ require './lib/gameboard.rb'
 
 describe Game do
   attr_accessor :player1, :player2, :name, :picks_arr, :totem, :grid
- 
+
   let(:game) { Game.new(player1, player2) }
   let(:player) { Players.new(name, picks_arr, totem) }
   let(:board) { GameBoard.new }
@@ -36,26 +36,25 @@ describe Game do
 
   describe '#pick_number' do
     it 'returns a string' do
-      expect(game_play.pick_number('Necmi')).to eql("Necmi, Please pick an available number between 1 to 9!")
+      expect(game_play.pick_number('Necmi')).to eql('Necmi, Please pick an available number between 1 to 9!')
     end
   end
 
   describe '#already_picked_message' do
-    it 'returns a string' do 
+    it 'returns a string' do
       expect(game.already_picked_message).to eql('This number is already pick, please make another pick.')
     end
   end
 
   describe '#declare_winner' do
-    it 'returns a string' do 
-      expect(game.declare_winner("Necmi")).to eql("Congratulations Dude!!!!, Necmi, You are the winner")
-    end
-  end
-  
-  describe '#game_tie' do
-    it 'returns a string' do 
-      expect(game.game_tie).to eql('The game is a tie!')
+    it 'returns a string' do
+      expect(game.declare_winner('Necmi')).to eql('Congratulations Dude!!!!, Necmi, You are the winner')
     end
   end
 
+  describe '#game_tie' do
+    it 'returns a string' do
+      expect(game.game_tie).to eql('The game is a tie!')
+    end
+  end
 end
