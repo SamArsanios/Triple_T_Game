@@ -20,7 +20,7 @@ module GamePlay
   end
 
   def pick_number(player_name)
-    "#{player_name}, Please pick an available number"
+    "#{player_name}, Please pick an available number between 1 to 9!"
   end
 
   def pick_not_valid
