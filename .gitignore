@@ -1,2 +1,4 @@
 .vscode
 .rubocop.yml
+Gemfile
+Gemfile.lock
