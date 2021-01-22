@@ -3,6 +3,8 @@ require_relative '../lib/game'
 require_relative '../lib/gameboard'
 require_relative '../lib/player'
 
+# gem install rspec
+# rspec --init
 describe GamePlay do
   let(:new_GamePlay) { Class.new { extend GamePlay } }
   describe '#player_names' do
